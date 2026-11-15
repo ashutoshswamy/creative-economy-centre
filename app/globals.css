@@ -1,26 +1,49 @@
-@import "tailwindcss";
+html{background:#F1F2EE;scroll-behavior:smooth}
+@media (prefers-color-scheme:dark){html:has(#cce-root[data-theme="auto"]),html:has(#cce-root[data-theme="dark"]){background:#0C0E10}}
+html:has(#cce-root[data-theme="light"]){background:#F1F2EE}
+body{margin:0}
+#cce-root{min-height:100dvh;display:flex;flex-direction:column}
+#cce-root>main{flex:1}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;padding:12px 18px;border-radius:999px;background:var(--ink);color:var(--bg);font-weight:600}
+.skip:focus{top:12px}
+.nav{position:sticky;top:0}
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Reading progress bar (scaled by GSAP). */
+.progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:40;background:var(--f-madder);transform:scaleX(0);transform-origin:left;pointer-events:none}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Paper grain: fixed, non-interactive, so it never repaints with scroll content. */
+#cce-root::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.035;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#cce-root[data-theme="dark"]::after{mix-blend-mode:screen;opacity:.035}
+@media (prefers-color-scheme:dark){#cce-root[data-theme="auto"]::after{mix-blend-mode:screen;opacity:.035}}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* GSAP owns reveals. Pre-hide only when motion is allowed; JS adds html.gsap. */
+.rv,.rv-f{animation:none!important}
+@media (prefers-reduced-motion:no-preference){
+  html.gsap :is(.rv,.rv-f,.secthead :is(h1,h2),.foot-sign){visibility:hidden}
+  html.gsap .hero :is(.t-lead,.btn-row),
+  html.gsap .hero h1,
+  html.gsap .phead :is(.crumbs,.t-eyebrow,.t-lead,h1){visibility:hidden}
 }
+.btn-lg{will-change:transform}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* `.cci a{color:inherit}` outranks single-class button/link colours; restore them. */
+.cci a.btn-primary,.cci a.btn-accent{color:var(--on-fill)}
+.cci a.btn-gold{color:var(--on-tur)}
+.cci a.btn-light{color:#1B2530}
+.cci a.btn-ghost{color:var(--ink)}
+.cci a.btn-ghost:hover{color:var(--bg)}
+.cci .band a.btn-ghost{color:var(--on-fill)}
+.cci .band a.btn-ghost:hover{color:#1B2530}
+.cci a.lnk{color:var(--c-madder)}
+.cci .band a.lnk{color:var(--on-fill)}
+.cci .reci-card a.lnk{color:inherit}
+.cci .cl-card a.lnk{color:var(--tone-c)}
+.hero-art .a .ph-tag{left:auto;right:10px}
+.arch-s .ph-kind,.arch .ph-kind{left:50%;transform:translateX(-50%);top:18px}
+/* Same colour restores for <button>: `.cci button{color:inherit}` outranks the single-class variants. */
+.cci button.btn-primary,.cci button.btn-accent{color:var(--on-fill)}
+.cci button.btn-gold{color:var(--on-tur)}
+.cci button.btn-light{color:#1B2530}
+.cci button.btn-ghost{color:var(--ink)}
+.cci button.btn-ghost:hover{color:var(--bg)}
+.cci .band button.btn-ghost{color:var(--on-fill)}
