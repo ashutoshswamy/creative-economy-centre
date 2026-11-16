@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav } from "@/lib/content";
 import { BrandMark } from "./BrandMark";
-import ThemeToggle from "./ThemeToggle";
 import { Bars3BottomLeftIcon, MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export default function Nav() {
@@ -48,7 +47,6 @@ export default function Nav() {
           >
             <MagnifyingGlassIcon width={22} height={22} aria-hidden="true" />
           </button>
-          <ThemeToggle />
           <Link className="btn btn-accent btn-sm nav-cta" href="/partners">Collaborate</Link>
           <button
             className="icon-btn burger"

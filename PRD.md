@@ -60,7 +60,7 @@ Top nav: About · Research · Knowledge Hub · Observatory (marked "Soon") · Po
 
 - FR-1 Responsive, mobile-first; breakpoints 600 / 900 (grid) / 1180 (full nav).
 - FR-2 Language toggle EN / हिन्दी. v1 ships English; all strings externalised; Hindi renders with Noto Devanagari fallbacks.
-- FR-3 Light, dark and system-auto themes; user choice persisted.
+- FR-3 Light theme only (dark mode removed).
 - FR-4 Site search (header panel) across Hub, Stories, Events, Policy.
 - FR-5 Newsletter signup (footer, Home, cluster pages) with interest selection; double opt-in; unsubscribe link.
 

@@ -32,14 +32,13 @@ export const metadata: Metadata = {
     "A national knowledge platform for research, policy, data and practice on India's creative economy, from craft clusters to creator studios.",
 };
 
-// Applies the saved theme before first paint so there is no light/dark flash.
-const themeInit = `document.documentElement.classList.add("gsap");try{var t=localStorage.getItem("cce-theme");if(t)document.getElementById("cce-root").dataset.theme=t}catch(e){}`;
+const themeInit = `document.documentElement.classList.add("gsap")`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" suppressHydrationWarning className={`${bricolage.variable} ${geist.variable} ${devanagari.variable}`}>
       <body>
-        <div id="cce-root" className="cci" data-theme="auto">
+        <div id="cce-root" className="cci">
           <script dangerouslySetInnerHTML={{ __html: themeInit }} />
           <Loader splash />
           <a className="skip" href="#main">

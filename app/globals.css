@@ -1,6 +1,4 @@
 html{background:#F1F2EE;scroll-behavior:smooth}
-@media (prefers-color-scheme:dark){html:has(#cce-root[data-theme="auto"]),html:has(#cce-root[data-theme="dark"]){background:#0C0E10}}
-html:has(#cce-root[data-theme="light"]){background:#F1F2EE}
 body{margin:0}
 #cce-root{min-height:100dvh;display:flex;flex-direction:column}
 #cce-root>main{flex:1}
@@ -13,8 +11,6 @@ body{margin:0}
 
 /* Paper grain: fixed, non-interactive, so it never repaints with scroll content. */
 #cce-root::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.035;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-#cce-root[data-theme="dark"]::after{mix-blend-mode:screen;opacity:.035}
-@media (prefers-color-scheme:dark){#cce-root[data-theme="auto"]::after{mix-blend-mode:screen;opacity:.035}}
 
 /* GSAP owns reveals. Pre-hide only when motion is allowed; JS adds html.gsap. */
 .rv,.rv-f{animation:none!important}
